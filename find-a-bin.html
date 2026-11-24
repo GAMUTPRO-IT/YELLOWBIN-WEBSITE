@@ -37,6 +37,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -165,12 +166,162 @@
         word-break: break-word;
         flex-shrink: 1;
       }
-      /* Ensure pill flex containers don't cause layout overflow */
       [style*="flex-wrap:wrap"][style*="gap:6px"] {
         max-width: 100%;
         overflow: hidden;
       }
     }
+
+    /* ── Interactive Map ── */
+    #map-wrapper {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(74,74,68,0.1), 0 1px 0 rgba(208,208,217,0.5);
+      border: 1px solid rgba(208,208,217,0.5);
+      height: 620px;
+    }
+    @media (max-width: 860px) {
+      #map-wrapper { grid-template-columns: 1fr; grid-template-rows: 380px 1fr; height: auto; }
+      #map-panel { order: 1; }
+      #locations-panel { order: 2; height: 320px; }
+    }
+    #map-panel { position: relative; }
+    #leaflet-map { width: 100%; height: 100%; }
+    #locations-panel {
+      background: white;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(208,208,217,0.6);
+    }
+    #loc-search-wrap {
+      padding: 16px 16px 10px;
+      border-bottom: 1px solid rgba(208,208,217,0.5);
+    }
+    #loc-search {
+      width: 100%;
+      padding: 10px 36px 10px 14px;
+      border: 1.5px solid #D0D0D9;
+      border-radius: 8px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      color: #545454;
+      outline: none;
+      background: #fff6ea url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B6B65' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") no-repeat right 12px center;
+      transition: border-color 0.2s;
+    }
+    #loc-search:focus { border-color: #FFDD00; }
+    #filter-chips {
+      display: flex;
+      gap: 6px;
+      padding: 10px 16px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(208,208,217,0.4);
+    }
+    .filter-chip {
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1.5px solid #D0D0D9;
+      color: #6B6B65;
+      background: white;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .filter-chip:hover { border-color: #FFDD00; color: #545454; }
+    .filter-chip.active { background: #FFDD00; border-color: #FFDD00; color: #545454; font-weight: 700; }
+    #loc-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 0;
+      scrollbar-width: thin;
+      scrollbar-color: #D0D0D9 transparent;
+    }
+    .loc-item {
+      padding: 12px 16px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .loc-item:hover { background: #fff6ea; border-left-color: #FFDD00; }
+    .loc-item.active { background: #FFF9E0; border-left-color: #FFDD00; }
+    .loc-item-name {
+      font-family: 'League Spartan', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #545454;
+      margin-bottom: 3px;
+    }
+    .loc-item-addr {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.78rem;
+      color: #6B6B65;
+      line-height: 1.4;
+    }
+    .loc-item-tag {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(255,221,0,0.18);
+      color: #8a7200;
+    }
+    .loc-count {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.75rem;
+      color: #9A9A94;
+      padding: 4px 16px 8px;
+    }
+
+    /* Leaflet popup custom */
+    .leaflet-popup-content-wrapper {
+      border-radius: 12px !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.14) !important;
+      border: none !important;
+      padding: 0 !important;
+      overflow: hidden;
+    }
+    .leaflet-popup-content { margin: 0 !important; width: auto !important; }
+    .leaflet-popup-tip { background: white !important; }
+    .yb-popup { padding: 16px 18px; min-width: 220px; }
+    .yb-popup-name {
+      font-family: 'League Spartan', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #545454;
+      margin-bottom: 4px;
+    }
+    .yb-popup-addr {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.8rem;
+      color: #6B6B65;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .yb-popup-actions { display: flex; gap: 8px; }
+    .yb-popup-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-family: 'League Spartan', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .yb-popup-btn:hover { opacity: 0.85; }
+    .yb-popup-btn-primary { background: #FFDD00; color: #545454; }
+    .yb-popup-btn-secondary { background: #f4f4f4; color: #545454; }
   </style>
   <link rel="stylesheet" href="/mobile.css" />
 </head>
@@ -252,21 +403,32 @@
     </div>
   </section>
 
-  <!-- MAP EMBED -->
+  <!-- INTERACTIVE MAP -->
   <section style="padding:60px 0 80px;background:#fff6ea;">
     <div class="max-w-6xl mx-auto px-6">
 
-      <!-- Google My Maps embed -->
-      <div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(74,74,68,0.08);border:1px solid rgba(208,208,217,0.5);height:640px;">
-        <iframe
-          src="https://www.google.com/maps/d/embed?mid=1dG6u8YdLYYWMt0dcYOjn4GJfJtGe-3o&ehbc=2E312F"
-          width="100%"
-          height="100%"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+      <div id="map-wrapper">
+        <!-- Locations sidebar -->
+        <div id="locations-panel">
+          <div id="loc-search-wrap">
+            <input id="loc-search" type="text" placeholder="Search by name or area…" autocomplete="off" />
+          </div>
+          <div id="filter-chips">
+            <button class="filter-chip active" data-area="all">All</button>
+            <button class="filter-chip" data-area="JB City">JB City</button>
+            <button class="filter-chip" data-area="Tebrau">Tebrau</button>
+            <button class="filter-chip" data-area="Skudai">Skudai</button>
+            <button class="filter-chip" data-area="Austin">Austin</button>
+            <button class="filter-chip" data-area="Larkin">Larkin</button>
+          </div>
+          <div class="loc-count" id="loc-count">Showing all locations</div>
+          <div id="loc-list"></div>
+        </div>
+
+        <!-- Leaflet map -->
+        <div id="map-panel">
+          <div id="leaflet-map"></div>
+        </div>
       </div>
 
       <!-- Don't see one nearby CTA -->
@@ -512,6 +674,182 @@
         document.getElementById('wa-options').style.display = 'none';
       }
     });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script>
+  (function() {
+    const LOCATIONS = [
+      { id:1,  name: 'AEON Tebrau City',           addr: 'Jalan Desa Tebrau, Taman Desa Tebrau, 81100 JB', area: 'Tebrau',  lat: 1.5302, lng: 103.7805 },
+      { id:2,  name: 'Giant Hypermarket Plentong',  addr: 'Jalan Plentong, Taman Pelangi, 81200 JB',         area: 'Tebrau',  lat: 1.5050, lng: 103.8010 },
+      { id:3,  name: 'Tesco Mutiara Rini',          addr: 'Jalan Mutiara Emas Utama, Taman Mutiara Rini',   area: 'Skudai',  lat: 1.5415, lng: 103.6752 },
+      { id:4,  name: 'KSL City Mall',               addr: 'Jalan Seladang, Taman Abad, 80250 JB',           area: 'JB City', lat: 1.4984, lng: 103.7264 },
+      { id:5,  name: 'Paradigm Mall JB',            addr: 'Jalan Skudai, Kelang Lama, 81300 JB',            area: 'Skudai',  lat: 1.5537, lng: 103.6613 },
+      { id:6,  name: 'JB City Square',              addr: '106-108 Jalan Wong Ah Fook, 80000 JB',           area: 'JB City', lat: 1.4597, lng: 103.7625 },
+      { id:7,  name: 'Austin Heights Village',      addr: 'Jalan Austin Heights 8, 81100 JB',               area: 'Austin',  lat: 1.5706, lng: 103.7607 },
+      { id:8,  name: 'Pandan Mewah Community Hall', addr: 'Jalan Pandan, Taman Pandan Mewah, 81200 JB',     area: 'Tebrau',  lat: 1.5147, lng: 103.7948 },
+      { id:9,  name: 'Larkin Sentral Bus Terminal', addr: 'Jalan Garuda, Larkin, 80350 JB',                 area: 'Larkin',  lat: 1.5226, lng: 103.7406 },
+      { id:10, name: 'Skudai Parade',               addr: 'Jalan Skudai, Taman Sri Putri, 81300 JB',        area: 'Skudai',  lat: 1.5363, lng: 103.6686 },
+      { id:11, name: 'Bukit Indah Aeon',            addr: 'Jalan Indah 15, Taman Bukit Indah, 81200 JB',    area: 'Skudai',  lat: 1.5504, lng: 103.6530 },
+      { id:12, name: 'Larkin Hana Mall',            addr: 'Jalan Garuda, Off Jalan Larkin, 80350 JB',       area: 'Larkin',  lat: 1.5280, lng: 103.7340 },
+      { id:13, name: 'Danga Bay Promenade',         addr: 'Jalan Skudai, Taman Daya, 81100 JB',             area: 'JB City', lat: 1.4809, lng: 103.7098 },
+      { id:14, name: 'SMK Taman Daya',              addr: 'Jalan Daya 1, Taman Daya, 81100 JB',             area: 'Austin',  lat: 1.5588, lng: 103.7495 },
+      { id:15, name: 'Setia Tropika',               addr: 'Jalan Setia Tropika 1, Setia Tropika, 81200 JB', area: 'Austin',  lat: 1.5680, lng: 103.7820 },
+    ];
+
+    const yellowIcon = L.divIcon({
+      className: '',
+      html: `<svg xmlns="http://www.w3.org/2000/svg" width="34" height="44" viewBox="0 0 34 44">
+        <filter id="s" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.3)"/>
+        </filter>
+        <path d="M17 0C7.6 0 0 7.6 0 17c0 12.75 17 27 17 27s17-14.25 17-27C34 7.6 26.4 0 17 0z" fill="#FFDD00" filter="url(#s)"/>
+        <circle cx="17" cy="17" r="7" fill="#545454"/>
+        <circle cx="17" cy="17" r="3.5" fill="#FFDD00"/>
+      </svg>`,
+      iconSize: [34, 44],
+      iconAnchor: [17, 44],
+      popupAnchor: [0, -46],
+    });
+
+    const yellowIconActive = L.divIcon({
+      className: '',
+      html: `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="52" viewBox="0 0 40 52">
+        <filter id="sa" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(255,221,0,0.6)"/>
+        </filter>
+        <path d="M20 0C9 0 0 9 0 20c0 15 20 32 20 32s20-17 20-32C40 9 31 0 20 0z" fill="#FFDD00" filter="url(#sa)"/>
+        <circle cx="20" cy="20" r="8.5" fill="#545454"/>
+        <circle cx="20" cy="20" r="4" fill="#FFDD00"/>
+      </svg>`,
+      iconSize: [40, 52],
+      iconAnchor: [20, 52],
+      popupAnchor: [0, -54],
+    });
+
+    const map = L.map('leaflet-map', {
+      center: [1.5100, 103.7400],
+      zoom: 12,
+      zoomControl: false,
+    });
+
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19,
+    }).addTo(map);
+
+    let activeId = null;
+    const markers = {};
+    const popups = {};
+
+    function makePopup(loc) {
+      const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${loc.lat},${loc.lng}`;
+      const waUrl = `https://wa.me/60123611200?text=Hi%2C%20I%27m%20looking%20for%20the%20Yellow%20Bin%20at%20${encodeURIComponent(loc.name)}.`;
+      return `<div class="yb-popup">
+        <div class="yb-popup-name">${loc.name}</div>
+        <div class="yb-popup-addr">${loc.addr}</div>
+        <div class="yb-popup-actions">
+          <a class="yb-popup-btn yb-popup-btn-primary" href="${mapsUrl}" target="_blank" rel="noopener">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Directions
+          </a>
+          <a class="yb-popup-btn yb-popup-btn-secondary" href="${waUrl}" target="_blank" rel="noopener">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            Ask
+          </a>
+        </div>
+      </div>`;
+    }
+
+    LOCATIONS.forEach(loc => {
+      const marker = L.marker([loc.lat, loc.lng], { icon: yellowIcon }).addTo(map);
+      marker.bindPopup(makePopup(loc), { maxWidth: 280 });
+      marker.on('click', () => selectLocation(loc.id, false));
+      markers[loc.id] = marker;
+    });
+
+    function selectLocation(id, flyMap = true) {
+      if (activeId && markers[activeId]) markers[activeId].setIcon(yellowIcon);
+      activeId = id;
+      markers[id].setIcon(yellowIconActive);
+
+      document.querySelectorAll('.loc-item').forEach(el => {
+        el.classList.toggle('active', parseInt(el.dataset.id) === id);
+      });
+
+      const loc = LOCATIONS.find(l => l.id === id);
+      if (flyMap) {
+        map.flyTo([loc.lat, loc.lng], 15, { duration: 0.8 });
+      }
+      markers[id].openPopup();
+
+      const item = document.querySelector(`.loc-item[data-id="${id}"]`);
+      if (item) item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    function renderList(locs) {
+      const list = document.getElementById('loc-list');
+      const count = document.getElementById('loc-count');
+      count.textContent = locs.length === LOCATIONS.length
+        ? `Showing all ${locs.length} locations`
+        : `${locs.length} location${locs.length !== 1 ? 's' : ''} found`;
+
+      list.innerHTML = locs.map(loc => `
+        <div class="loc-item${activeId === loc.id ? ' active' : ''}" data-id="${loc.id}">
+          <div class="loc-item-name">${loc.name}</div>
+          <div class="loc-item-addr">${loc.addr}</div>
+          <span class="loc-item-tag">${loc.area}</span>
+        </div>
+      `).join('');
+
+      list.querySelectorAll('.loc-item').forEach(el => {
+        el.addEventListener('click', () => selectLocation(parseInt(el.dataset.id), true));
+      });
+    }
+
+    let currentArea = 'all';
+    let currentSearch = '';
+
+    function applyFilters() {
+      let locs = LOCATIONS;
+      if (currentArea !== 'all') locs = locs.filter(l => l.area === currentArea);
+      if (currentSearch) {
+        const q = currentSearch.toLowerCase();
+        locs = locs.filter(l => l.name.toLowerCase().includes(q) || l.addr.toLowerCase().includes(q) || l.area.toLowerCase().includes(q));
+      }
+      renderList(locs);
+
+      LOCATIONS.forEach(loc => {
+        const visible = locs.some(l => l.id === loc.id);
+        if (visible) { if (!map.hasLayer(markers[loc.id])) markers[loc.id].addTo(map); }
+        else { if (map.hasLayer(markers[loc.id])) map.removeLayer(markers[loc.id]); }
+      });
+
+      if (locs.length > 0) {
+        const group = L.featureGroup(locs.map(l => markers[l.id]).filter(Boolean));
+        map.fitBounds(group.getBounds().pad(0.2), { maxZoom: 14 });
+      }
+    }
+
+    document.querySelectorAll('.filter-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentArea = btn.dataset.area;
+        applyFilters();
+      });
+    });
+
+    document.getElementById('loc-search').addEventListener('input', e => {
+      currentSearch = e.target.value.trim();
+      applyFilters();
+    });
+
+    renderList(LOCATIONS);
+  })();
   </script>
 
   <script>
