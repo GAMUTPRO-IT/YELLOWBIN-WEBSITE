@@ -1,0 +1,389 @@
+/* ============================================================
+   YB Website — Global Footer & Header Normalization
+   Applied at ALL viewport sizes (no media query wrapper).
+   Ensures consistent link colors, font, and section headings
+   across every page regardless of per-page style differences.
+   ============================================================ */
+
+/* ── FOOTER LINKS: enforce #D0D0D9 on all pages. ── */
+footer .footer-link {
+  color: #D0D0D9 !important;
+  font-family: 'Quicksand', sans-serif !important;
+  font-size: 0.875rem !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+footer .footer-link:hover {
+  color: #FFDD00 !important;
+}
+
+/* ── FOOTER SECTION HEADINGS ── */
+footer [style*="rgba(255,255,255,0.35)"] {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* ── FOOTER BODY DESCRIPTION TEXT ── */
+footer [style*="rgba(255,255,255,0.45)"] {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ── SOCIAL ICON LINKS in footer ── */
+footer a[href*="instagram"],
+footer a[href*="facebook"],
+footer a[href*="wa.me"] {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+footer a[href*="instagram"]:hover,
+footer a[href*="facebook"]:hover,
+footer a[href*="wa.me"]:hover {
+  color: #FFDD00 !important;
+}
+footer a[href*="instagram"] svg,
+footer a[href*="facebook"] svg,
+footer a[href*="wa.me"] svg {
+  stroke: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* ── MOBILE MENU LINKS ── */
+#mobile-menu a {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.95rem;
+  color: #545454;
+  text-decoration: none;
+}
+#mobile-menu a[style*="color:#FFDD00"] {
+  color: #FFDD00 !important;
+  font-weight: 600 !important;
+}
+
+
+/* ============================================================
+   YB Website — Fluid Responsive Styles
+   Uses clamp() and vw units so layout scales smoothly at
+   every viewport width — no discrete breakpoints needed.
+   ============================================================ */
+
+
+/* ─────────────────────────────────────────
+   1. NAVIGATION — fluid logo + nav padding
+   ───────────────────────────────────────── */
+
+nav img {
+  height: clamp(50px, 6.5vw, 78px) !important;
+  width: auto !important;
+}
+
+nav {
+  padding-top: clamp(8px, 1.5vw, 12px) !important;
+  padding-bottom: clamp(8px, 1.5vw, 12px) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   2. HERO HEADING — single fluid rule
+      replaces two conflicting @media blocks
+   ───────────────────────────────────────── */
+
+.hero-heading {
+  font-size: clamp(2rem, 7.5vw, 5.5rem) !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.05 !important;
+}
+
+/* Hero content area vertical padding */
+.hero-section .max-w-6xl {
+  padding-top: clamp(5rem, 10vw, 7rem) !important;
+  padding-bottom: clamp(3rem, 6vw, 4rem) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   3. TAILWIND SECTION PADDING — fluid
+   ───────────────────────────────────────── */
+
+.py-24 {
+  padding-top: clamp(4rem, 6vw, 6rem) !important;
+  padding-bottom: clamp(4rem, 6vw, 6rem) !important;
+}
+.py-20 {
+  padding-top: clamp(3.5rem, 5.5vw, 5rem) !important;
+  padding-bottom: clamp(3.5rem, 5.5vw, 5rem) !important;
+}
+.py-16 {
+  padding-top: clamp(3rem, 5vw, 4rem) !important;
+  padding-bottom: clamp(3rem, 5vw, 4rem) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   4. SECTION PADDING — inline style overrides
+      fluid from phone min → desktop max
+   ───────────────────────────────────────── */
+
+section[style*="padding:100px"] {
+  padding-top: clamp(3.5rem, 10vw, 6.25rem) !important;
+  padding-bottom: clamp(3.5rem, 10vw, 6.25rem) !important;
+}
+section[style*="padding:80px"] {
+  padding-top: clamp(3rem, 8vw, 5rem) !important;
+  padding-bottom: clamp(3rem, 8vw, 5rem) !important;
+}
+section[style*="padding:64px"] {
+  padding-top: clamp(2.5rem, 7vw, 4rem) !important;
+  padding-bottom: clamp(2.5rem, 7vw, 4rem) !important;
+}
+
+[style*="padding:80px 0"],
+[style*="padding:72px 0"] {
+  padding-top: clamp(3rem, 8vw, 5rem) !important;
+  padding-bottom: clamp(3rem, 8vw, 5rem) !important;
+}
+
+[style*="padding:48px"],
+[style*="padding:56px"] {
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 3.5rem) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   5. STAT / IMPACT NUMBERS — fluid font
+   ───────────────────────────────────────── */
+
+[style*="font-size:2.8rem"] {
+  font-size: clamp(2rem, 6vw, 2.8rem) !important;
+}
+[style*="font-size:3rem"] {
+  font-size: clamp(2.2rem, 6vw, 3rem) !important;
+}
+
+/* Stat card cell padding */
+[style*="padding:40px 32px"],
+[style*="padding:36px 28px"],
+[style*="padding:36px 32px"] {
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.25rem, 3.5vw, 2rem) !important;
+}
+
+/* Impact number class */
+.impact-number {
+  font-size: clamp(1.8rem, 7vw, 2.8rem) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   6. STEP CARDS — fluid padding + step number
+   ───────────────────────────────────────── */
+
+.step-card {
+  padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.25rem, 3.5vw, 2rem) !important;
+}
+
+.step-number {
+  font-size: clamp(3.5rem, 7vw, 5rem) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   7. WHY / FEATURE CARDS — fluid padding
+   ───────────────────────────────────────── */
+
+.why-card {
+  padding: clamp(1.25rem, 3.5vw, 1.75rem) clamp(1.1rem, 3vw, 1.5rem) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   8. MAX-WIDTH TEXT BLOCKS — never exceed
+      their container at any viewport width
+   ───────────────────────────────────────── */
+
+[style*="max-width:600px"],
+[style*="max-width:580px"],
+[style*="max-width:560px"],
+[style*="max-width:540px"],
+[style*="max-width:520px"],
+[style*="max-width:500px"],
+[style*="max-width:480px"],
+[style*="max-width:460px"],
+[style*="max-width:440px"],
+[style*="max-width:420px"],
+[style*="max-width:400px"],
+[style*="max-width:880px"],
+[style*="max-width:720px"],
+[style*="max-width:900px"] {
+  max-width: min(var(--max, 600px), 100%) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   9. MARQUEE / PARTNER LOGOS — fluid fade
+   ───────────────────────────────────────── */
+
+[style*="background:linear-gradient(to right,white,transparent)"],
+[style*="background:linear-gradient(to left,white,transparent)"] {
+  width: clamp(48px, 6vw, 80px) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   10. LANGUAGE PILLS — allow wrap on small
+       phones (binary: kept in the 767px block)
+   ───────────────────────────────────────── */
+
+
+/* ─────────────────────────────────────────
+   11. FOOTER LOGO — fluid scale
+   ───────────────────────────────────────── */
+
+footer img {
+  height: clamp(56px, 7vw, 78px) !important;
+  width: auto !important;
+}
+
+
+/* ─────────────────────────────────────────
+   12. HORIZONTAL PADDING — fluid (replaces
+       the 400px block for very small phones)
+   ───────────────────────────────────────── */
+
+.px-6 {
+  padding-left: clamp(1rem, 4vw, 1.5rem) !important;
+  padding-right: clamp(1rem, 4vw, 1.5rem) !important;
+}
+
+nav .max-w-6xl {
+  padding-left: clamp(1rem, 4vw, 1.5rem);
+  padding-right: clamp(1rem, 4vw, 1.5rem);
+}
+
+
+/* ─────────────────────────────────────────
+   13. HERO STAT / BADGE ROW — fluid gap
+   ───────────────────────────────────────── */
+
+.hero-section [style*="display:flex"][style*="flex-wrap:wrap"] {
+  gap: clamp(4px, 1.5vw, 8px) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   14. GRID — collapse multi-col → single col
+       on small screens only. Must stay in a
+       @media block: auto-fit with a vw-based
+       minmax would override desktop grids
+       (e.g. the about page 3×2 photo grid).
+   ───────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  [style*="grid-template-columns:repeat(3,"],
+  [style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  [style*="grid-template-columns:repeat(4,"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   15. FAQ ACCORDION — fluid padding
+   ───────────────────────────────────────── */
+
+[style*="padding:24px 28px"] {
+  padding: clamp(1.1rem, 3vw, 1.5rem) clamp(1rem, 2.5vw, 1.75rem) !important;
+}
+[style*="padding:20px 28px"] {
+  padding: clamp(1rem, 2.5vw, 1.25rem) clamp(1rem, 2.5vw, 1.75rem) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   16. FIND-A-BIN SEARCH — full width inputs
+       at all small sizes
+   ───────────────────────────────────────── */
+
+[style*="max-width:400px"][style*="display:flex"] {
+  max-width: min(400px, 100%) !important;
+  width: 100% !important;
+}
+
+
+/* ─────────────────────────────────────────
+   17. TOUCH TARGETS — 44px minimum on small
+       screens only (binary rule, keep @media)
+   ───────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .btn-primary,
+  .btn-secondary {
+    min-height: 44px;
+    padding-top: 11px !important;
+    padding-bottom: 11px !important;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   19. BINARY SHOW/HIDE — cannot be fluid,
+       single breakpoint at 767px
+   ───────────────────────────────────────── */
+
+/* Hero banner defaults: desktop set visible, mobile set hidden */
+.mobile-slides { display: none; }
+.mobile-dots   { display: none; }
+
+@media (max-width: 767px) {
+  /* About page oversized image blocks */
+  .about-hero-photos { display: none !important; }
+  .about-volunteer-photos { display: none !important; }
+  .recycle-featured { display: none !important; }
+
+  /* Language pills — allow wrap on small screens */
+  [style*="white-space:nowrap"] {
+    white-space: normal !important;
+  }
+
+  /* Slider arrows (swipe is the natural gesture on mobile) */
+  .slide-prev,
+  .slide-next { display: none !important; }
+
+  /* Move slide dots higher */
+  .slide-dots { bottom: 40px !important; }
+
+  /* Decorative blobs — prevent overflow clutter */
+  div[style*="width:360px"][style*="border-radius:50%"],
+  div[style*="width:280px"][style*="border-radius:50%"],
+  div[style*="width:300px"][style*="border-radius:50%"],
+  div[style*="width:600px"][style*="border-radius:50%"],
+  div[style*="width:400px"][style*="border-radius:50%"] {
+    display: none !important;
+  }
+
+  /* Hero banner: hide desktop slide set, show mobile slide set */
+  .desktop-slides { display: none !important; }
+  .mobile-slides  { display: block !important; }
+  .desktop-dots   { display: none !important; }
+  .mobile-dots    { display: flex !important; }
+}
+
+
+/* ─────────────────────────────────────────
+   20. OVERFLOW SAFETY — belt & suspenders
+   ───────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  html, body {
+    overflow-x: hidden !important;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Exceptions: nav and footer logos have explicit heights above */
+  nav img,
+  footer img {
+    max-width: none;
+  }
+}

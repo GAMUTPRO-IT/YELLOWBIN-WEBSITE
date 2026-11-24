@@ -1,0 +1,598 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon_io/YB_Logo_favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="manifest" href="/favicon_io/site.webmanifest" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yellow Bin Gallery | Recycling Events Across Malaysia</title>
+  <meta name="description" content="See Yellow Bin in action — photos from our textile recycling drives, community events, and bin locations across Johor Bahru, Selangor, KL and Melaka." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yellowbin.com.my/gallery" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://yellowbin.com.my/"},
+      {"@type": "ListItem", "position": 2, "name": "Gallery", "item": "https://yellowbin.com.my/gallery.html"}
+    ]
+  }
+  </script>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yellowbin.com.my/gallery" />
+  <meta property="og:title" content="Yellow Bin Gallery | Recycling Events Across Malaysia" />
+  <meta property="og:description" content="Photos from Yellow Bin recycling events, community programmes, and drop-off points across Selangor, KL, Johor and Melaka." />
+  <meta property="og:image" content="https://yellowbin.com.my/brand_assets/yellow-bin-og.png" />
+  <meta property="og:site_name" content="Yellow Bin" />
+  <meta property="og:locale" content="en_MY" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yellow Bin Gallery | Recycling Events" />
+  <meta name="twitter:description" content="See our recycling events and community partnerships across Malaysia." />
+  <meta name="twitter:image" content="https://yellowbin.com.my/brand_assets/yellow-bin-og.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Quicksand', sans-serif; color: #545454; background: #F0F0EB; overflow-x: hidden; min-height: 100vh; }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: #545454;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.15), 0 4px 24px rgba(0,0,0,0.12);
+    }
+    .nav-link {
+      position: relative;
+      font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 0.875rem;
+      color: rgba(255,255,255,0.75); letter-spacing: 0.01em;
+      transition: color 0.2s ease; text-decoration: none;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: #FFDD00;
+      transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-link:hover { color: white; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: white; }
+    .nav-link.active::after { width: 100%; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #FFDD00; color: #545454;
+      font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 0.875rem;
+      letter-spacing: 0.02em; padding: 11px 24px; border-radius: 6px;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 8px rgba(244,208,0,0.3), 0 1px 2px rgba(0,0,0,0.08);
+      cursor: pointer; border: none; text-decoration: none;
+    }
+    .btn-primary:hover { background: #e6c400; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(244,208,0,0.45), 0 2px 4px rgba(0,0,0,0.1); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 3px solid #FFDD00; outline-offset: 3px; }
+
+    /* Hero section */
+    .page-hero {
+      background: #1A1A16;
+      padding: 140px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; top: -40%; right: -10%; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(244,208,0,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute; bottom: -20%; left: -5%; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(244,208,0,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Masonry grid */
+    .gallery-grid {
+      columns: 4;
+      column-gap: 16px;
+    }
+    @media (max-width: 1024px) { .gallery-grid { columns: 3; } }
+    @media (max-width: 640px) { .gallery-grid { columns: 2; column-gap: 10px; } }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      display: block;
+    }
+    @media (max-width: 640px) { .gallery-item { margin-bottom: 10px; } }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,26,22,0.75) 0%, rgba(26,26,22,0) 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+    .gallery-item-caption {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.82rem;
+      color: white;
+      line-height: 1.4;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(10, 10, 8, 0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+      backdrop-filter: blur(6px);
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lightbox-img {
+      max-width: min(90vw, 960px);
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+      transform: scale(0.94);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .lightbox.open .lightbox-img { transform: scale(1); }
+
+    .lightbox-close {
+      position: fixed; top: 24px; right: 28px;
+      background: rgba(255,255,255,0.12); color: white; border: none;
+      width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      z-index: 10001;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+    .lightbox-caption {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.75); font-family: 'Quicksand', sans-serif; font-size: 0.875rem;
+      text-align: center; max-width: 600px; padding: 0 24px;
+      z-index: 10001;
+    }
+
+    /* Empty & loading states */
+    .empty-state {
+      text-align: center; padding: 80px 24px;
+    }
+
+    /* Skeleton shimmer */
+    @keyframes shimmer {
+      0% { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, #E5E5E0 25%, #EFEFEA 50%, #E5E5E0 75%);
+      background-size: 400px 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 12px;
+    }
+
+    /* Reveal animation */
+    .gallery-item {
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      background: #000000;
+    }
+    .footer-link {
+      color: #D0D0D9;
+      font-size: 0.875rem;
+      transition: color 0.2s ease;
+      text-decoration: none;
+    }
+    .footer-link:hover { color: #FFDD00; }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+
+    /* Event gallery sections */
+    .event-section { padding: 64px 0; }
+    .event-section + .event-section { border-top: 1px solid rgba(84,84,84,0.1); }
+    .section-eyebrow {
+      font-family: 'League Spartan', sans-serif; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #9A9A94; margin: 0 0 10px;
+    }
+    .section-title {
+      font-family: 'League Spartan', sans-serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 900;
+      color: #1A1A16; letter-spacing: -0.03em; line-height: 1.1;
+      margin: 0 0 32px; padding-left: 18px; border-left: 4px solid #FFDD00;
+    }
+
+    /* ── Mobile: fix language pill overflow ── */
+    @media (max-width: 640px) {
+      [style*="border-radius:20px"][style*="white-space:nowrap"] {
+        white-space: normal !important;
+        max-width: calc(100vw - 52px);
+        overflow-wrap: break-word;
+        word-break: break-word;
+        flex-shrink: 1;
+      }
+      /* Ensure pill flex containers don't cause layout overflow */
+      [style*="flex-wrap:wrap"][style*="gap:6px"] {
+        max-width: 100%;
+        overflow: hidden;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/mobile.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+    <nav id="navbar" class="px-6 py-3">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0">
+        <img src="brand_assets/Yellow%20Bin%20Logo_New%20White.png" alt="Yellow Bin, Recycle Textiles" style="height:78px;width:auto;" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/how-it-works" class="nav-link">How It Works</a>
+        <a href="/about" class="nav-link">About Us</a>
+        <a href="/gallery" class="nav-link active">Gallery</a>
+        <a href="/faq" class="nav-link">FAQ</a>
+        <a href="/partner" class="nav-link">Partner With Us</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="/find-a-bin" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Find a Bin
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="hamburger" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-md border-t border-grey-light mt-2 rounded-b-2xl shadow-lg">
+      <div class="flex flex-col gap-1 px-6 py-4">
+        <a href="/" class="py-3 font-body font-medium text-grey-dark border-b border-grey-light/50">Home</a>
+        <a href="/how-it-works" class="py-3 font-body font-medium text-grey-dark border-b border-grey-light/50">How It Works</a>
+        <a href="/about" class="py-3 font-body font-medium text-grey-dark border-b border-grey-light/50">About Us</a>
+        <a href="/gallery" class="py-3 font-body font-medium text-grey-dark border-b border-grey-light/50" style="color:#FFDD00;font-weight:600;">Gallery</a>
+        <a href="/faq" class="py-3 font-body font-medium text-grey-dark border-b border-grey-light/50">FAQ</a>
+        <a href="/partner" class="py-3 font-body font-medium text-grey-dark border-b border-grey-light/50">Partner With Us</a>
+        <a href="/find-a-bin" class="btn-primary mt-2 justify-center">Find a Bin Near You</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="max-w-7xl mx-auto px-6 relative" style="z-index:1;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(244,208,0,0.12);border:1px solid rgba(244,208,0,0.3);border-radius:100px;padding:6px 14px;margin-bottom:20px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#FFDD00;"></span>
+        <span style="font-family:'Quicksand',sans-serif;font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.7);letter-spacing:0.08em;text-transform:uppercase;">Community Moments</span>
+      </div>
+      <h1 style="font-family:'League Spartan',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:900;color:white;letter-spacing:-0.04em;line-height:1.0;margin:0 0 16px;">
+        Our Gallery
+      </h1>
+      <p style="font-family:'Quicksand',sans-serif;font-size:1rem;color:#D0D0D9;max-width:480px;line-height:1.7;margin:0;">
+        A look at our events, drives, and the communities we're building, one bin at a time.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTIONS -->
+  <main style="padding: 40px 0 100px;">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <!-- 01 MHME Green Campaign -->
+      <section class="event-section">
+        <h2 class="section-title">MMHE Green Campaign</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item" style="animation-delay:0s;" onclick="openLightbox('Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_014652963_iOS.jpg','')"><img src="Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_014652963_iOS.jpg" alt="Yellow Bin textile recycling event at MMHE Green Campaign, Johor Bahru — kitar semula pakaian" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.04s;" onclick="openLightbox('Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_023839820_iOS.jpg','')"><img src="Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_023839820_iOS.jpg" alt="Yellow Bin textile recycling event at MMHE Green Campaign, Johor Bahru — kitar semula pakaian" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.08s;" onclick="openLightbox('Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_032225213_iOS.jpg','')"><img src="Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_032225213_iOS.jpg" alt="Yellow Bin textile recycling event at MMHE Green Campaign, Johor Bahru — kitar semula pakaian" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.12s;" onclick="openLightbox('Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_055912231_iOS.jpg','')"><img src="Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_055912231_iOS.jpg" alt="Yellow Bin textile recycling event at MMHE Green Campaign, Johor Bahru — kitar semula pakaian" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_062139960_iOS.jpg','')"><img src="Event_Pictures/MHME%20Green%20Campaign%20(17%20April%202019)/20190417_062139960_iOS.jpg" alt="Yellow Bin textile recycling event at MMHE Green Campaign, Johor Bahru — kitar semula pakaian" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+        </div>
+      </section>
+
+      <!-- 02 Disaster Relief Campaign -->
+      <section class="event-section">
+        <h2 class="section-title">Disaster Relief Campaign (AM x YB)</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item" style="animation-delay:0s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/20150403_173618.jpg','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/20150403_173618.jpg" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.04s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/20150918_180932.jpg','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/20150918_180932.jpg" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.08s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/20150918_181340_001.jpg','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/20150918_181340_001.jpg" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.12s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/4.jpg','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/4.jpg" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/7.jpg','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/7.jpg" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/DSC05847.JPG','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/DSC05847.JPG" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/DSC05879.JPG','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/DSC05879.JPG" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/DSC05949.JPG','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/DSC05949.JPG" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/_SAM9891.jpg','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/_SAM9891.jpg" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/_SAM9937.jpg','')"><img src="Event_Pictures/Disaster%20Relief%20Campaign%20(AM%20x%20YB)/_SAM9937.jpg" alt="Yellow Bin disaster relief textile recycling campaign — recycle clothes donation Malaysia" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+        </div>
+      </section>
+
+      <!-- 03 SJK(C) Kempas Baru -->
+      <section class="event-section">
+        <h2 class="section-title">SJK(C) Kempas Baru</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item" style="animation-delay:0s;" onclick="openLightbox('Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0039.jpg','')"><img src="Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0039.jpg" alt="Yellow Bin kitar semula pakaian school textile recycling event at SJK(C) Kempas Baru, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.04s;" onclick="openLightbox('Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0040.jpg','')"><img src="Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0040.jpg" alt="Yellow Bin kitar semula pakaian school textile recycling event at SJK(C) Kempas Baru, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.08s;" onclick="openLightbox('Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0042.jpg','')"><img src="Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0042.jpg" alt="Yellow Bin kitar semula pakaian school textile recycling event at SJK(C) Kempas Baru, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.12s;" onclick="openLightbox('Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0045.jpg','')"><img src="Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0045.jpg" alt="Yellow Bin kitar semula pakaian school textile recycling event at SJK(C) Kempas Baru, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0046.jpg','')"><img src="Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0046.jpg" alt="Yellow Bin kitar semula pakaian school textile recycling event at SJK(C) Kempas Baru, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0047.jpg','')"><img src="Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0047.jpg" alt="Yellow Bin kitar semula pakaian school textile recycling event at SJK(C) Kempas Baru, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0048.jpg','')"><img src="Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0048.jpg" alt="Yellow Bin kitar semula pakaian school textile recycling event at SJK(C) Kempas Baru, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0049.jpg','')"><img src="Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0049.jpg" alt="Yellow Bin kitar semula pakaian school textile recycling event at SJK(C) Kempas Baru, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0050.jpg','')"><img src="Event_Pictures/SJK%20(C)%20Kempas%20Baru/IMG-20170125-WA0050.jpg" alt="Yellow Bin kitar semula pakaian school textile recycling event at SJK(C) Kempas Baru, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+        </div>
+      </section>
+
+      <!-- 04 SJK(C) Foon Yew 3 -->
+      <section class="event-section">
+        <h2 class="section-title">SJK(C) Foon Yew 3</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item" style="animation-delay:0s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/DSC_0274.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/DSC_0274.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.04s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/DSC_0279.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/DSC_0279.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.08s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/DSC_0280.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/DSC_0280.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.12s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3361.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3361.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3375.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3375.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3383.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3383.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3388.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3388.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3401.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3401.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3405.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3405.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3407.JPG','')"><img src="Event_Pictures/SJKC%20Foon%20Yew%203%20Recyle%20Program/IMG_3407.JPG" alt="Yellow Bin recycle clothes drive at SJK(C) Foon Yew 3 school, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+        </div>
+      </section>
+
+      <!-- 05 SMK Mount Austin -->
+      <section class="event-section">
+        <h2 class="section-title">SMK Mount Austin</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item" style="animation-delay:0s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2698.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2698.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.04s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2699.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2699.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.08s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2713.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2713.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.12s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2714.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2714.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2715.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2715.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2717.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2717.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2720.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2720.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2721.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2721.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2725.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2725.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2726.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2726.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2727.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2727.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2729.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2729.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2730.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2730.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2731.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2731.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2732.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2732.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2733.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2733.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2734.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2734.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2735.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2735.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/SMK%20Mount%20Austin/IMG_2736.JPG','')"><img src="Event_Pictures/SMK%20Mount%20Austin/IMG_2736.JPG" alt="Yellow Bin textile recycling awareness event at SMK Mount Austin, Johor Bahru" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+        </div>
+      </section>
+
+      <!-- 06 A-Z Kindergarten -->
+      <section class="event-section">
+        <h2 class="section-title">A-Z Kindergarten</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item" style="animation-delay:0s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0027.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0027.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.04s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0028.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0028.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.08s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0029.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0029.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.12s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0030.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0030.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0031.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0031.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0032.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0032.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0033.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0033.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0034.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0034.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0035.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0035.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0036.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0036.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+          <div class="gallery-item" style="animation-delay:0.16s;" onclick="openLightbox('Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0037.jpg','')"><img src="Event_Pictures/Tadika%20A-Z/IMG-20170428-WA0037.jpg" alt="Yellow Bin kitar semula pakaian textile recycling event at A-Z Kindergarten, Johor" loading="lazy" style="border-radius:12px;"><div class="gallery-item-overlay"></div></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- DYNAMIC GALLERY -->
+  <section style="background:#E8E8E3;padding:64px 0 100px;border-top:2px solid rgba(84,84,84,0.1);">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="section-eyebrow" style="margin-bottom:10px;">Latest Updates</p>
+      <h2 class="section-title" style="margin-bottom:40px;">More From The Community</h2>
+
+      <!-- More photos coming soon -->
+      <div class="empty-state">
+        <svg style="width:64px;height:64px;color:#C0C0BA;margin:0 auto 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+        <h3 style="font-family:'League Spartan',sans-serif;font-weight:700;font-size:1.1rem;color:#545454;margin:0 0 8px;">More photos coming soon</h3>
+        <p style="font-family:'Quicksand',sans-serif;font-size:0.875rem;color:#9A9A94;margin:0;">Check back soon for more community moments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="" />
+    <p id="lightbox-caption" class="lightbox-caption"></p>
+  </div>
+
+  <!-- FOOTER -->
+    <footer style="padding:36px 0 20px;">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="grid md:grid-cols-5 gap-6 pb-6 border-b border-white/10">
+
+        <!-- Brand -->
+        <div class="md:col-span-2">
+          <img src="brand_assets/Yellow%20Bin%20Logo_New%20White.png" alt="Yellow Bin" loading="lazy" style="height:78px;width:auto;margin-bottom:16px;" />
+          <p style="font-family:'Quicksand',sans-serif;font-size:0.82rem;line-height:1.6;color:rgba(255,255,255,0.45);max-width:280px;margin-bottom:12px;">
+            Malaysia's trusted recycling social enterprise, turning waste into community impact across Johor &amp; Singapore.
+          </p>
+          <div style="display:flex;gap:8px;">
+            <a href="https://instagram.com/yellowbin.my" target="_blank" style="width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background 0.2s ease;" onmouseover="this.style.background='rgba(244,208,0,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://facebook.com/yellowbin" target="_blank" style="width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background 0.2s ease;" onmouseover="this.style.background='rgba(244,208,0,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://wa.me/60123611200" target="_blank" style="width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background 0.2s ease;" onmouseover="this.style.background='rgba(244,208,0,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <div style="font-family:'League Spartan',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;">Company</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <a href="/about" class="footer-link">About Us</a>
+            <a href="/our-impact" class="footer-link">Our Impact</a>
+            <a href="/how-it-works" class="footer-link">How It Works</a>
+            <a href="/partner" class="footer-link">Partner With Us</a>
+          </div>
+        </div>
+
+        <!-- Get In Touch -->
+        <div>
+          <div style="font-family:'League Spartan',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;">Get In Touch</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <a href="/faq" class="footer-link">FAQ</a>
+            <a href="https://outlook.office.com/mail/deeplink/compose?to=enquiry@yellowbin.com.my" target="_blank" class="footer-link">Email Us</a>
+            <a href="/find-a-bin" class="footer-link">Find a Bin</a>
+            <a href="https://wa.me/60123611200?text=Hi%2C%20I%20would%20like%20to%20request%20a%20Yellow%20Bin%20placement." target="_blank" class="footer-link">Request a Bin</a>
+            <a href="/gallery" class="footer-link">Press &amp; Media</a>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div style="font-family:\'League Spartan\',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:14px;">Contact</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;align-items:flex-start;gap:10px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFDD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+              <a href="tel:+60123611200" style="font-family:Quicksand,sans-serif;font-size:0.875rem;color:#D0D0D9;text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='#D0D0D9'">+60 12-361 1200 <span style="font-family:Quicksand,sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.4);margin-left:6px;letter-spacing:0.03em;">Hotline</span></a>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFDD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16l.19.92z"/></svg>
+              <a href="tel:+6072133397" style="font-family:Quicksand,sans-serif;font-size:0.875rem;color:#D0D0D9;text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='#D0D0D9'">07-213 3397 <span style="font-family:Quicksand,sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.4);margin-left:6px;letter-spacing:0.03em;">Office</span></a>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFDD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span style="font-family:Quicksand,sans-serif;font-size:0.875rem;color:#D0D0D9;">Mon–Sat, 8:30AM–4:30PM</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFDD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span style="font-family:Quicksand,sans-serif;font-size:0.875rem;line-height:1.6;color:#D0D0D9;">3, Jalan Belati 1, Taman Perindustrian Maju Jaya, 81300, Johor Bahru, Johor Darul Ta'zim</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div style="padding-top:16px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;">
+        <div style="font-family:'Quicksand',sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.3);">
+          © 2026 Yellow Bin. All rights reserved.
+        </div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;"><a href="/sitemap" class="footer-link" style="font-size:0.78rem;color:rgba(255,255,255,0.3);">Sitemap</a></div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <div id="wa-widget" style="position:fixed;bottom:26px;right:26px;z-index:9998;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+    <div id="wa-options" style="display:none;flex-direction:column;gap:8px;align-items:flex-end;">
+      <a href="https://wa.me/60123611200?text=Hi%2C+I%27d+like+to+find+a+Yellow+Bin+near+me." target="_blank" rel="noopener" style="background:white;color:#2A2A24;font-family:'League Spartan',sans-serif;font-weight:600;font-size:0.78rem;padding:9px 14px;border-radius:100px;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.12);white-space:nowrap;" onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='white'">📍 Find a bin near me</a>
+      <a href="https://wa.me/60123611200?text=Hi%2C+I%27d+like+to+request+a+Yellow+Bin+placement." target="_blank" rel="noopener" style="background:white;color:#2A2A24;font-family:'League Spartan',sans-serif;font-weight:600;font-size:0.78rem;padding:9px 14px;border-radius:100px;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.12);white-space:nowrap;" onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='white'">🗑️ Request a bin placement</a>
+      <a href="https://wa.me/60123611200?text=Hi%2C+I+have+a+question+about+Yellow+Bin." target="_blank" rel="noopener" style="background:white;color:#2A2A24;font-family:'League Spartan',sans-serif;font-weight:600;font-size:0.78rem;padding:9px 14px;border-radius:100px;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.12);white-space:nowrap;" onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='white'">💬 General enquiry</a>
+    </div>
+    <button onclick="toggleWA()" aria-label="Chat on WhatsApp" style="width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);border:none;cursor:pointer;flex-shrink:0;transition:transform 0.2s ease,box-shadow 0.2s ease;" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(37,211,102,0.6)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.45)'">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </button>
+  </div>
+  <script>
+    function toggleWA() {
+      const opts = document.getElementById('wa-options');
+      opts.style.display = opts.style.display === 'flex' ? 'none' : 'flex';
+    }
+    document.addEventListener('click', (e) => {
+      if (!document.getElementById('wa-widget').contains(e.target)) {
+        document.getElementById('wa-options').style.display = 'none';
+      }
+    });
+  </script>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    function openLightbox(url, caption) {
+      document.getElementById('lightbox-img').src = url;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event && event.target === document.getElementById('lightbox-img')) return;
+      if (event && event.currentTarget === document.getElementById('lightbox') && event.target !== event.currentTarget) return;
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { document.getElementById('lightbox-img').src = ''; }, 300);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
