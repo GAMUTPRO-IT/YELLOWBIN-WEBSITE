@@ -42,7 +42,7 @@ try {
     $mail->Port       = 25;
 
     $mail->setFrom('partnership@yellowbin.com.my', 'Yellow Bin');
-    $mail->addAddress('arif@gamutpro.my');
+    $mail->addAddress('enquiry@yellowbin.com.my');
     $mail->addReplyTo($email, $name);
 
     $mail->Subject = 'New Partnership Enquiry — ' . $name . ($organisation ? ' (' . $organisation . ')' : '');
