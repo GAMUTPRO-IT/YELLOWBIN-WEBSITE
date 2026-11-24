@@ -8,8 +8,14 @@
   </url>
   <url>
     <loc>https://yellowbin.com.my/find-a-bin</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yellowbin.com.my/donate-clothes-johor-bahru</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
