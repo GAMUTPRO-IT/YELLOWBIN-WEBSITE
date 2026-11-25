@@ -52,7 +52,7 @@
         }
       },
       {
-        "@type": "Organization",
+        "@type": ["Organization","LocalBusiness"],
         "@id": "https://yellowbin.com.my/#organization",
         "name": "Yellow Bin",
         "url": "https://yellowbin.com.my/",
@@ -63,6 +63,22 @@
           "height": 512
         },
         "description": "Johor's textile recycling network, helping reduce textile waste through convenient bin drop-off points across Johor Bahru and Johor.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "3, Jalan Belati 1, Taman Perindustrian Maju Jaya",
+          "addressLocality": "Johor Bahru",
+          "postalCode": "81300",
+          "addressRegion": "Johor",
+          "addressCountry": "MY"
+        },
+        "telephone": "+60-12-361-1200",
+        "email": "enquiry@yellowbin.com.my",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "08:30",
+          "closes": "16:30"
+        },
         "areaServed": {
           "@type": "State",
           "name": "Johor",
@@ -72,7 +88,7 @@
           }
         },
         "knowsAbout": ["textile recycling", "fabric donation", "clothing recycling", "sustainable fashion"],
-        "sameAs": []
+        "sameAs": ["https://instagram.com/yellowbin.my","https://facebook.com/yellowbin"]
       },
       {
         "@type": "FAQPage",
